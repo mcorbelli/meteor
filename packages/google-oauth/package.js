@@ -10,7 +10,7 @@ Cordova.depends({
 Package.onUse(api => {
   api.use("ecmascript");
   api.use('oauth2', ['client', 'server']);
-  api.use('oauth', ['client', 'server']);
+  api.use('oauth@3.0.3', ['client', 'server']);
   api.use('fetch', ['server']);
   api.use('service-configuration');
   api.use('random', 'client');

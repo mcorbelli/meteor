@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.use('oauth1', ['client', 'server']);
-  api.use('oauth', ['client', 'server']);
+  api.use('oauth@3.0.3', ['client', 'server']);
   api.use('random', 'client');
   api.use('service-configuration', ['client', 'server']);
 

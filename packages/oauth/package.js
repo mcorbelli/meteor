@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Common code for OAuth-based services",
-  version: '3.0.2',
+  version: '3.0.3',
 });
 
 Package.onUse(api => {
@@ -44,7 +44,7 @@ Package.onTest(api => {
   api.use('tinytest');
   api.use('random');
   api.use('service-configuration', 'server');
-  api.use('oauth', 'server');
+  api.use('oauth@3.0.3', 'server');
   api.addFiles("oauth_tests.js", 'server');
 });
 

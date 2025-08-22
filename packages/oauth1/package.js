@@ -7,7 +7,7 @@ Package.onUse(api => {
   api.use('ecmascript', ['client', 'server']);
   api.use('random');
   api.use('service-configuration', ['client', 'server']);
-  api.use('oauth', ['client', 'server']);
+  api.use('oauth@3.0.3', ['client', 'server']);
   api.use('check', 'server');
 
   api.use('mongo');
@@ -27,6 +27,6 @@ Package.onTest(api => {
   api.use('service-configuration', 'server');
   api.use('oauth-encryption', 'server');
   api.use('oauth1', 'server');
-  api.use('oauth', 'server');
+  api.use('oauth@3.0.3', 'server');
   api.addFiles("oauth1_tests.js", 'server');
 });
