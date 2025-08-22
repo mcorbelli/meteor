@@ -134,7 +134,7 @@ const getTokens = async (query, callback) => {
     code: query.code,
     client_id: config.clientId,
     client_secret: OAuth.openSecret(config.secret),
-    redirect_uri: OAuth._redirectUri('google', config),
+    redirect_uri: OAuth._redirectUri('google'),
     grant_type: 'authorization_code',
   });
   const request = await OAuth._fetch('https://accounts.google.com/o/oauth2/token', 'POST', {

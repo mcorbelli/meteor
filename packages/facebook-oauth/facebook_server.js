@@ -80,7 +80,7 @@ const getTokenResponse = async (query) => {
   if (!config) throw new ServiceConfiguration.ConfigError();
 
   const absoluteUrlOptions = getAbsoluteUrlOptions(query);
-  const redirectUri = OAuth._redirectUri('facebook', config, undefined, absoluteUrlOptions);
+  const redirectUri = OAuth._redirectUri('facebook', undefined, absoluteUrlOptions);
 
   return OAuth._fetch(
     `https://graph.facebook.com/v${API_VERSION}/oauth/access_token`,

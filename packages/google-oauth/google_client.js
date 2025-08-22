@@ -74,7 +74,7 @@ Google.requestCredential = (options, credentialRequestCompleteCallback) => {
     "response_type": "code",
     "client_id":  config.clientId,
     "scope": scopes.join(' '), // space delimited
-    "redirect_uri": OAuth._redirectUri('google', config),
+    "redirect_uri": OAuth._redirectUri('google'),
     "state": OAuth._stateParam(loginStyle, credentialToken, options.redirectUrl)
   });
   const loginUrl = 'https://accounts.google.com/o/oauth2/auth?' +

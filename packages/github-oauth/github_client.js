@@ -34,7 +34,7 @@ Github.requestCredential = (options, credentialRequestCompleteCallback) => {
     'https://github.com/login/oauth/authorize' +
     `?client_id=${config.clientId}` +
     `&scope=${flatScope}` +
-    `&redirect_uri=${OAuth._redirectUri('github', config)}` +
+    `&redirect_uri=${OAuth._redirectUri('github')}` +
     `&state=${OAuth._stateParam(loginStyle, credentialToken, options && options.redirectUrl)}` +
     allowSignup;
 

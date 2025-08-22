@@ -43,7 +43,7 @@ const getAccessToken = async query => {
     client_id: config.clientId,
     client_secret: OAuth.openSecret(config.secret),
     grant_type: 'authorization_code',
-    redirect_uri: OAuth._redirectUri('meetup', config),
+    redirect_uri: OAuth._redirectUri('meetup'),
     state: query.state
   });
 

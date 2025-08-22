@@ -41,7 +41,7 @@ const requestCredential = (options, credentialRequestCompleteCallback) => {
     loginUrl += `&user_email=${encodeURIComponent(options.loginHint)}`;
   }
 
-  loginUrl += `&redirect_uri=${OAuth._redirectUri('meteor-developer', config)}`;
+  loginUrl += `&redirect_uri=${OAuth._redirectUri('meteor-developer')}`;
 
   OAuth.launchLogin({
     loginService: "meteor-developer",

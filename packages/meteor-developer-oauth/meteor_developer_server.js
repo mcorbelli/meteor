@@ -41,7 +41,7 @@ const getTokens = async (query) => {
     code: query.code,
     client_id: config.clientId,
     client_secret: OAuth.openSecret(config.secret),
-    redirect_uri: OAuth._redirectUri('meteor-developer', config),
+    redirect_uri: OAuth._redirectUri('meteor-developer'),
   }).toString();
 
   return OAuth._fetch(

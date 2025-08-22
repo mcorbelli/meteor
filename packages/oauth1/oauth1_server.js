@@ -38,7 +38,7 @@ OAuth._requestHandlers['1'] = async (service, query, res) => {
 
   if (query.requestTokenAndRedirect) {
     // step 1 - get and store a request token
-    const callbackUrl = OAuth._redirectUri(service.serviceName, config, {
+    const callbackUrl = OAuth._redirectUri(service.serviceName, {
       state: query.state,
       cordova: (query.cordova === "true"),
       android: (query.android === "true")

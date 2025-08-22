@@ -1,6 +1,6 @@
 OAuth._storageTokenPrefix = "Meteor.oauth.credentialSecret-";
 
-OAuth._redirectUri = (serviceName, config, params, absoluteUrlOptions) => {
+OAuth._redirectUri = (serviceName, params, absoluteUrlOptions) => {
   // Clone because we're going to mutate 'params'. The 'cordova' and
   // 'android' parameters are only used for picking the host of the
   // redirect URL, and not actually included in the redirect URL itself.

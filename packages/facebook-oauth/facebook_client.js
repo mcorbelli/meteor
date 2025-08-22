@@ -34,7 +34,7 @@ Facebook.requestCredential = (options, credentialRequestCompleteCallback) => {
 
   let loginUrl =
       `https://www.facebook.com/v${API_VERSION}/dialog/oauth?client_id=${config.appId}` +
-      `&redirect_uri=${OAuth._redirectUri('facebook', config, options.params, options.absoluteUrlOptions)}` +
+      `&redirect_uri=${OAuth._redirectUri('facebook', options.params, options.absoluteUrlOptions)}` +
       `&display=${display}&scope=${scope}` +
       `&state=${OAuth._stateParam(loginStyle, credentialToken, options && options.redirectUrl)}`;
 

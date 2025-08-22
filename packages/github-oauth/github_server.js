@@ -40,10 +40,7 @@ const getAccessToken = async (query) => {
       client_id: config.clientId,
       client_secret: config.secret,
       code: query.code,
-      redirect_uri: OAuth._redirectUri(
-        'github',
-        config
-      )
+      redirect_uri: OAuth._redirectUri('github')
     });
     const request = await OAuth._fetch(
       `https://github.com/login/oauth/access_token?${content.toString()}`,

@@ -34,7 +34,7 @@ Meetup.requestCredential = (options, credentialRequestCompleteCallback) => {
         `?client_id=${config.clientId}` +
         '&response_type=code' +
         `&scope=${flatScope}` +
-        `&redirect_uri=${OAuth._redirectUri('meetup', config)}` +
+        `&redirect_uri=${OAuth._redirectUri('meetup')}` +
         `&state=${OAuth._stateParam(loginStyle, credentialToken, options && options.redirectUrl)}`;
 
   // meetup box gets taller when permissions requested.
