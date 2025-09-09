@@ -10,10 +10,7 @@ OAuth.showPopup = (url, callback, dimensions) => {
 };
 
 // Determine the login style (popup or redirect) for this login flow.
-//
-//
 OAuth._loginStyle = (service, config, options) => {
-
   if (Meteor.isCordova) {
     return "popup";
   }
@@ -42,13 +39,13 @@ OAuth._stateParam = (loginStyle, credentialToken, redirectUrl) => {
   const state = {
     loginStyle,
     credentialToken,
-    isCordova: Meteor.isCordova
+    isCordova: Meteor.isCordova,
   };
 
   if (loginStyle === 'redirect' ||
     (Meteor.settings?.public?.packages?.oauth?.setRedirectUrlWhenLoginStyleIsPopup && loginStyle === 'popup')
   ) {
-    state.redirectUrl = redirectUrl || ('' + window.location);
+    state.redirectUrl = redirectUrl || window.location.origin;
   }
 
   // Encode base64 as not all login services URI-encode the state

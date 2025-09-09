@@ -4,15 +4,10 @@ Package.describe({
 });
 
 Package.onUse(api => {
-  api.use(['check', 'ecmascript', 'localstorage', 'url']);
-
-  api.use(['routepolicy', 'webapp', 'mongo', 'service-configuration', 'logging'], 'server');
-
-  api.use(['reload', 'base64'], 'client');
-
-  api.use('oauth-encryption', 'server', {weak: true});
-  api.use('fetch', 'server');
-
+  api.use(["check", "ecmascript", "localstorage", "url"]);
+  api.use(["routepolicy", "webapp", "mongo", "service-configuration", "logging", "fetch"], "server");
+  api.use(["reload", "base64"], "client");
+  api.use("oauth-encryption", "server", { weak: true });
 
   api.export('OAuth');
   api.export('OAuthTest', 'server', {testOnly: true});

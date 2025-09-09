@@ -47,23 +47,22 @@ OAuthTest.unregisterService = name => {
   delete registeredServices[name];
 };
 
-
 OAuth.retrieveCredential = (credentialToken, credentialSecret) =>
   OAuth._retrievePendingCredential(credentialToken, credentialSecret);
 
-
 // The state parameter is normally generated on the client using
 // `btoa`, but for tests we need a version that runs on the server.
-//
 OAuth._generateState = (loginStyle, credentialToken, redirectUrl) => {
   return Buffer.from(JSON.stringify({
     loginStyle: loginStyle,
     credentialToken: credentialToken,
-    redirectUrl: redirectUrl})).toString('base64');
+    redirectUrl: redirectUrl,
+  })).toString('base64');
 };
 
 OAuth._stateFromQuery = query => {
   let string;
+
   try {
     string = Buffer.from(query.state, 'base64').toString('binary');
   } catch (e) {
@@ -89,9 +88,11 @@ OAuth._loginStyleFromQuery = query => {
   } catch (err) {
     style = "popup";
   }
+
   if (style !== "popup" && style !== "redirect") {
     throw new Error(`Unrecognized login style: ${style}`);
   }
+  
   return style;
 };
 

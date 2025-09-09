@@ -69,6 +69,8 @@ Google.requestCredential = (options, credentialRequestCompleteCallback) => {
   }
 
   const loginStyle = OAuth._loginStyle('google', config, options);
+  const isLocalhost = OAuth._isLocalEnvironment(state.redirectUrl);
+
   // https://developers.google.com/accounts/docs/OAuth2WebServer#formingtheurl
   Object.assign(loginUrlParameters, {
     "response_type": "code",
@@ -76,9 +78,11 @@ Google.requestCredential = (options, credentialRequestCompleteCallback) => {
     "scope": scopes.join(' '), // space delimited
     "redirect_uri": OAuth._redirectUri('google', undefined, {
       rootUrl: options.redirectUrl,
+      secure: !isLocalhost,
     }),
     "state": OAuth._stateParam(loginStyle, credentialToken, options.redirectUrl)
   });
+  
   const loginUrl = 'https://accounts.google.com/o/oauth2/auth?' +
     Object.keys(loginUrlParameters).map(param => 
       `${encodeURIComponent(param)}=${encodeURIComponent(loginUrlParameters[param])}`

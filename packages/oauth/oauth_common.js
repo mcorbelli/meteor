@@ -49,3 +49,18 @@ OAuth._redirectUri = (serviceName, params, absoluteUrlOptions) => {
     null,
     params);
 };
+
+OAuth._isLocalEnvironment = (urlString = Meteor.absoluteUrl()) => {
+  try {
+    const { hostname } = new URL(urlString);
+
+    return (
+      Meteor.isDevelopment &&
+      (hostname === "localhost" ||
+      hostname === "127.0.0.1" ||
+      hostname === "::1")
+    );
+  } catch {
+    return false;
+  }
+}

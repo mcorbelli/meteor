@@ -1,6 +1,5 @@
 import Google from './namespace.js';
 import { Accounts } from 'meteor/accounts-base';
-import { fetch } from 'meteor/fetch';
 
 const hasOwn = Object.prototype.hasOwnProperty;
 
@@ -128,15 +127,25 @@ const getTokens = async (query, callback) => {
   const config = await ServiceConfiguration.configurations.findOneAsync({
     service: 'google',
   });
-  if (!config) throw new ServiceConfiguration.ConfigError();
 
+  if (!config) {
+    throw new ServiceConfiguration.ConfigError();
+  }
+
+  const state = OAuth._stateFromQuery(query);
+  const isLocalhost = OAuth._isLocalEnvironment(state.redirectUrl);
+  
   const content = new URLSearchParams({
     code: query.code,
     client_id: config.clientId,
     client_secret: OAuth.openSecret(config.secret),
-    redirect_uri: OAuth._redirectUri('google'),
+    redirect_uri: OAuth._redirectUri('google', undefined, {
+      rootUrl: state.redirectUrl,
+      secure: !isLocalhost,
+    }),
     grant_type: 'authorization_code',
   });
+
   const request = await OAuth._fetch('https://accounts.google.com/o/oauth2/token', 'POST', {
     headers: {
       Accept: 'application/json',
@@ -144,6 +153,7 @@ const getTokens = async (query, callback) => {
     },
     body: content,
   });
+
   const response = await request.json();
 
   if (response.error) {
